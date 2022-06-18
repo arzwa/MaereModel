@@ -70,7 +70,7 @@ m = MaereModel.AgeDistModel(0.05, [0.7, 0.9], [80], 5., T, δ)
 chn = Chain(data=y, model=m, prior=prior, proposal=proposals, state=-Inf)
 
 chn1 = Chain(y, m, prior, props(), -Inf)
-out1 = mh(chn1, 1100)
+out1 = mh(chn1, 11000)
 post1 = DataFrame(out1)
 
 chn2 = Chain(y, m, prior, props(), -Inf)
@@ -79,7 +79,7 @@ post2 = DataFrame(out2)
 
 map(1:6) do i
     p = plot(post1[500:end,i])
-    plot!(post2[500:end,i])
+    #plot!(post2[500:end,i])
 end |> x->plot(x..., size=(800,300))
 
 pp = map(out1[1000:10:end]) do x
@@ -102,6 +102,7 @@ bar!(proportionmap(ts), color=:salmon, alpha=0.5, linecolor=:salmon)
 plot!(P, title="(A)",
      xlabel="\$K_\\mathrm{S}\$", 
      ylabel="probability density")
+
 
 using StatsBase
 nf = length(unique(df[:,:Family]))

@@ -9,3 +9,4 @@ See `test/inference.jl` for an example on how to use the code.
 
 TODO: Should look for better smoothing approaches.
 
+![](img/vitis.png)
